@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解鎖世代：家庭教育融入與教師內在沉澱實踐</title>
+    <!-- 引入 html2canvas 套件以支援一鍵轉存圖片 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary: #2d5a40;      /* 靜謐森林綠 */
+            --secondary: #7d5a44;    /* 溫暖木質棕 */
+            --accent: #e8f0e6;       /* 柔和鼠尾草草綠 */
+            --highlight: #d97736;    /* 暖橘點綴 */
+            --bg: #fcfbf7;          /* 心靈沉澱米白 */
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+            --light-text: #7f8c8d;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto 25px auto;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #2d5a40, #437a4e);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 1.9rem; 
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 8px 0 0 0;
+            font-size: 0.98rem;
+            opacity: 0.9;
+        }
+
+        /* 平穩對齊且均分的 Flex 響應式頁籤 */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 1100px;
+            margin: 0 auto 20px auto;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            flex: 1 1 180px; /* 自動填滿且設定最小均分寬度 */
+            padding: 12px 10px;
+            font-size: 0.92rem;
+            font-weight: bold;
+            border: none;
+            background-color: #e5eae3;
+            color: var(--primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(45, 90, 64, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active { display: block; }
+
+        /* 卡片與網格 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border-left: 6px solid var(--secondary);
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-top: 4px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary);
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            margin-right: 4px;
+            font-weight: bold;
+        }
+
+        .scenario-text {
+            font-size: 0.92rem;
+            color: var(--text);
+            margin-bottom: 12px;
+            background: #fbf9f5;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+
+        /* 閱讀區與語音按鈕 */
+        .reading-section {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary);
+        }
+
+        .reading-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .reading-article {
+            background: #fdfbf7;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.94rem;
+            color: var(--text);
+            line-height: 1.7;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .btn-audio {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .btn-audio:hover {
+            background-color: var(--secondary);
+        }
+
+        .prompt-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            position: relative;
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            float: right;
+        }
+
+        .btn-copy:hover { background-color: var(--primary); }
+
+        /* 安頓卡生成頁面 */
+        .card-generator {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; }
+
+        .preview-card {
+            background: #fdfcf9;
+            border: 2px solid var(--secondary);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .preview-card h3 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
+
+        /* 子頁籤膠囊按鈕樣式 */
+        .sub-mode-btn {
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            border: 1px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .sub-mode-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 外連資源按鈕樣式 */
+        .ext-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            font-size: 0.88rem;
+            border: 1px solid var(--secondary);
+            background: #fdfaf5;
+            color: var(--secondary);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .ext-link-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* 3D 翻牌互動卡片樣式 */
+        .flip-card {
+            background-color: transparent;
+            height: 180px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-card-front {
+            background-color: #ffffff;
+            color: var(--primary);
+            border-top: 5px solid var(--secondary);
+        }
+
+        .flip-card-back {
+            background-color: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        /* 國小各科快速篩選按鈕列與 3 上 4 下兩排佈局 */
+        .filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .filter-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .btn-filter {
+            background-color: #eef2eb;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn-filter:hover, .btn-filter.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        footer { text-align: center; margin-top: 40px; padding: 20px; color: var(--light-text); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>解鎖世代 ✕ 家庭教育融入與教師內在沉澱</h1>
+    <p>安住內在，方能解鎖世代：從教師自我照顧到家庭教育的推動</p>
+</header>
+
+<!-- 主頁籤列 -->
+<div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab0')">1. 📚 10 大範疇全覽</button>
+    <button class="tab-btn" onclick="switchTab('tab_mind')">2. 💡 先照顧教師內心</button>
+    <button class="tab-btn" onclick="switchTab('tab1')">3. 🌱 情境與情緒覺察</button>
+    <button class="tab-btn" onclick="switchTab('tab2')">4. 💬 AI 導引演練 Prompt</button>
+    <button class="tab-btn" onclick="switchTab('tab3')">5. 🃏 產出內在安頓卡</button>
+</div>
+
+<!-- 分頁 0：10大範疇簡介、翻牌測驗與國小對照 -->
+<div id="tab0" class="tab-content active">
+    <div style="background: white; padding: 22px 20px; border-radius: 12px; margin-bottom: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <!-- 動態標題（會根據下方按鈕切換） -->
+        <h3 id="tab0DynamicTitle" style="color: var(--primary); margin: 0 0 16px 0; font-size: 1.25rem;">家庭教育 10 大範疇定義總覽</h3>
+        
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <button class="sub-mode-btn active" id="btnModeOverview" onclick="toggleCategoryMode('overview')">📋 10 大範疇總覽</button>
+            <button class="sub-mode-btn" id="btnModeFlip" onclick="toggleCategoryMode('flip')">🃏 翻牌記憶自我測驗</button>
+            <button class="sub-mode-btn" id="btnModeSubject" onclick="toggleCategoryMode('subject')">🏫 國小各科與 10 大範疇對照</button>
+            <a href="https://familyedu.moe.gov.tw/front.aspx" target="_blank" class="ext-link-btn" title="開啟教育部家庭教育資源網">
+                🌐 教育部家庭教育資源網 ➔
+            </a>
+        </div>
+    </div>
+
+    <!-- 1. 靜態圖文全覽區 -->
+    <div id="categoryOverview" class="grid-container">
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">1. 親職教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進父母或監護人了解應盡職責與教養子女之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">2. 子職教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進子女了解應盡本分之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">3. 性別教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進性別交往與互動之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">4. 婚姻教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進夫妻溝通、經營與相處之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">5. 失親教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">協助面對失去家庭成員、調適心理與生活的教育活動。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: var(--highlight); background-color: #fffdfa;">
+            <div>
+                <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                <div class="card-title">6. 倫理教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進家族成員倫理關係與互動的教育活動（代間傳遞與世代承載）。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">7. 資源管理教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進家庭時間、金錢與各類資源分配及運用之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">8. 多元文化教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進對不同文化背景家庭與族群理解包容之知能。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: var(--highlight); background-color: #fffdfa;">
+            <div>
+                <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                <div class="card-title">9. 情緒教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進個人情緒覺察、表達與自我調節之知能（內在冰山與安頓沉澱）。</p>
+            </div>
+        </div>
+        <div class="card" style="border-left-color: #2d5a40;">
+            <div>
+                <div class="card-title">10. 人口教育</div>
+                <p style="margin: 0; font-size: 0.93rem;">增進對人口結構改變、少子化或高齡化等現象認知之知能。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 翻牌記憶測驗區 -->
+    <div id="categoryFlip" class="grid-container" style="display: none;">
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">1. 親職教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">1. 親職教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進父母或監護人了解應盡職責與教養子女之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">2. 子職教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">2. 子職教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進子女了解應盡本分之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">3. 性別教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">3. 性別教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進性別交往與互動之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">4. 婚姻教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">4. 婚姻教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進夫妻溝通、經營與相處之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">5. 失親教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">5. 失親教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">協助面對失去家庭成員、調適心理與生活的教育活動。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                    <div class="card-title">6. 倫理教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back" style="background-color: var(--highlight);">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">6. 倫理教育（示範焦點）</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進家族成員倫理關係與互動的教育活動（代間傳遞與世代承載）。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">7. 資源管理教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">7. 資源管理教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進家庭時間、金錢與各類資源分配及運用之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">8. 多元文化教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">8. 多元文化教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進對不同文化背景家庭與族群理解包容之知能。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                    <div class="card-title">9. 情緒教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back" style="background-color: var(--highlight);">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">9. 情緒教育（示範焦點）</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進個人情緒覺察、表達與自我調節之知能（內在冰山與安頓沉澱）。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span class="tag">點擊翻牌查看答案</span>
+                    <div class="card-title">10. 人口教育</div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-top: 5px;">核心定義是什麼？</p>
+                </div>
+                <div class="flip-card-back">
+                    <div style="font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 4px; margin-bottom: 8px;">10. 人口教育</div>
+                    <p style="font-size: 0.88rem; margin: 0;">增進對人口結構改變、少子化或高齡化等現象認知之知能。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 國小各科與 10 大範疇對照區 -->
+    <div id="categorySubject" style="display: none;">
+        <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); text-align: center;">
+            <div style="font-weight: bold; color: var(--primary); font-size: 1.05rem; margin-bottom: 12px;">按國小科目篩選：</div>
+            
+            <div class="filter-container">
+                <div class="filter-row">
+                    <button class="btn-filter active" onclick="filterSubject('all')">顯示全部領域</button>
+                    <button class="btn-filter" onclick="filterSubject('chi')">國語文 / 語文</button>
+                    <button class="btn-filter" onclick="filterSubject('soc')">社會領域 (歷史/地理/公民)</button>
+                </div>
+                <div class="filter-row">
+                    <button class="btn-filter" onclick="filterSubject('int')">綜合活動 / 生活課程</button>
+                    <button class="btn-filter" onclick="filterSubject('health')">健康與體育</button>
+                    <button class="btn-filter" onclick="filterSubject('math')">數學領域</button>
+                    <button class="btn-filter" onclick="filterSubject('multi')">本土語 / 新住民語</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-container" id="subjectGrid">
+            <div class="card subject-card" data-subjects="chi int" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">國語文</span><span class="tag">綜合活動</span>
+                    <div class="card-title">1. 親職教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>國語文：</b>家庭故事文本閱讀、父母關愛與期待相關課文（如《背影》等親情題材）。<br>
+                        • <b>綜合活動：</b>「家庭中的我」單元，引導理解父母與照顧者付出的辛勞與期待。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請扮演國小備課專家，結合【親職教育】，為國小【國語文】親情故事課文設計 2 個引導學生體會父母養育辛勞與期待的課堂討論題。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="chi int soc" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">國語文</span><span class="tag">生活課程</span><span class="tag">綜合活動</span>
+                    <div class="card-title">2. 子職教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>生活課程(低年級)：</b>「我是家庭小幫手」，主動分擔家務與珍惜家庭資源。<br>
+                        • <b>國語文/綜合活動(中高年級)：</b>孝親尊長、了解身為子女在家庭中的角色、權利與責任。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【子職教育】，為國小低/中年級設計一個『家庭小幫手行動檢核表』與 5 分鐘寫作引導，學習主動表達對家人的感謝與關懷。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="health int soc" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">健康與體育</span><span class="tag">生活課程</span><span class="tag">綜合活動</span>
+                    <div class="card-title">3. 性別教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>健康與體育：</b>身體自主權、認識身體界線、尊重男女差異與人際交往。<br>
+                        • <b>生活/綜合活動：</b>打破家庭家務分工的性別刻板印象（如媽媽煮飯、爸爸看報紙的傳統定型）。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【性別教育】，為國小健體與綜合活動課設計一份『打破家庭家務性別刻板印象』的小組遊戲與家務平權學習單。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="soc chi" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">社會領域</span><span class="tag">國語文</span>
+                    <div class="card-title">4. 婚姻教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>社會領域：</b>家庭型態（單親、隔代、核心家庭）的演變、認識婚姻關係與伴侶互相扶持的重要性。<br>
+                        • <b>國語文：</b>從敘事繪本或故事中觀察家庭成員之間的溝通與相處之道。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【婚姻教育】，為國小高年級社會課『現代家庭型態』單元，設計一個引導學生理解伴侶溝通與家庭互助的思考任務。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="chi int" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">國語文</span><span class="tag">綜合活動</span>
+                    <div class="card-title">5. 失親教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>國語文：</b>生命教育故事繪本閱讀（如面對寵物或親人離去、生命循環）。<br>
+                        • <b>綜合活動/輔導：</b>情緒悲傷撫平與調適、學習同理面對家庭變故的同儕。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【失親教育】，針對生命教育故事繪本，為國小中年級設計 2 個引導學生學習面對離別、悲傷調適與建立心理韌性的討論題。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="soc chi int" style="border-left-color: var(--highlight); background-color: #fffdfa;">
+                <div>
+                    <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                    <span class="tag">社會領域</span><span class="tag">國語文</span><span class="tag">生活課程</span>
+                    <div class="card-title">6. 倫理教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>社會領域：</b>傳統與現代家族關係、祖孫互動、傳統節慶中的家族倫理與文化傳承。<br>
+                        • <b>國語文/生活：</b>尊老愛幼、代間關懷，建立正向的家族倫理互動。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【倫理教育】，為國小社會/國語課設計一個『跨世代祖孫生活智慧大調查』的採訪作業與世代共融分享會。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="math int soc" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">數學領域</span><span class="tag">綜合活動</span><span class="tag">生活課程</span>
+                    <div class="card-title">7. 資源管理教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>數學領域：</b>貨幣計算、儲蓄概念、智慧消費（需要 vs 想要）、簡易家庭收支記帳。<br>
+                        • <b>生活/綜合活動：</b>家庭時間管理、資源回收與節約能源（水電資源分配）。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【資源管理教育】，為國小中高年級【數學/理財】設計一個『我會幫家庭算預算（Need vs Want）』實務學習單。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="soc multi chi" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">社會領域</span><span class="tag">本土語/新住民語</span><span class="tag">國語文</span>
+                    <div class="card-title">8. 多元文化教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>社會領域：</b>臺灣多元族群（原住民、客家、閩南、新住民）的家庭生活與飲食、傳統節慶習俗。<br>
+                        • <b>本土語/新住民語：</b>語言文化學習，增進對不同文化背景家庭的包容與欣賞。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【多元文化教育】，為國小社會/新住民語課設計一個『世界與臺灣各族群家庭美食與節慶探險』20 分鐘體驗活動。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="health int chi" style="border-left-color: var(--highlight); background-color: #fffdfa;">
+                <div>
+                    <span class="tag" style="background-color: #fde8d7; color: var(--highlight);">★ 本專案示範核心</span>
+                    <span class="tag">健康與體育</span><span class="tag">綜合活動</span><span class="tag">國語文</span>
+                    <div class="card-title">9. 情緒教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>健康與體育：</b>情緒覺察（喜怒哀樂）、情緒調節與紓解壓力的方式。<br>
+                        • <b>綜合活動/國語文：</b>薩提爾情緒冰山覺察、非暴力溝通（我訊息表達）、人際衝突處理。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【情緒教育】，為國小學生設計一個『情緒冰山小偵探』教案，學習用『我訊息』表達生氣背後的害怕與期待。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card subject-card" data-subjects="soc math" style="border-left-color: var(--primary);">
+                <div>
+                    <span class="tag">社會領域</span><span class="tag">數學領域</span>
+                    <div class="card-title">10. 人口教育</div>
+                    <div class="scenario-text">
+                        <strong>國小課綱主題對應：</strong><br>
+                        • <b>社會領域：</b>少子化與高齡化社會現象、社區高齡友善環境與長者照顧責任。<br>
+                        • <b>數學領域：</b>統計圖表（長條圖、圓餅圖）解讀臺灣人口結構變遷。
+                    </div>
+                </div>
+                <div class="prompt-box">
+                    <span>請結合【人口教育】，為國小高年級【社會/數學】設計一個探討『少子化與高齡化對未來自立與長者照顧』的圖表探究議題討論題。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 分頁 1：融入家庭教育的前提——照顧教師內心 -->
+<div id="tab_mind" class="tab-content">
+    <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; border-top: 6px solid var(--highlight);">
+        <h2 style="color: var(--primary); margin-top: 0; text-align: center;">🌱 教師核心理念：在陪伴孩子之前，請先安頓你自己</h2>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text);">
+            家庭教育法涵蓋的 10 大範疇，每個議題都深深牽動著「人與人的情感連結」。當教師嘗試在課堂中推動親職、子職或代間倫理時，我們往往也會不自覺地觸碰到自己原生家庭的記憶與未解的情緒。
+        </p>
+        
+        <div style="background: var(--accent); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 5px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-top: 0;">💡 本專案的核心主張：</h3>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.98rem; line-height: 1.8;">
+                <li><b>先安頓，再教學：</b> 老師不是完美的機器，只有當教師自身的內在感到安全、充盈時，才能提供學生充滿同理與支持的學習環境。</li>
+                <li><b>AI 作為心理陪伴：</b> 透過生成式 AI 的溫柔對話，教師可以在教學繁忙之餘，進行個人依附風格的覺察與內在沉澱。</li>
+                <li><b>以「示範」帶動改變：</b> 本系統後續（頁籤 3~5）將以<b>【代間倫理 ✕ 情緒教育】</b>作為具體示範，帶領教師體驗如何透過 AI 進行內在梳理，並轉化為實務溝通的力量。</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 25px;">
+            <p style="color: var(--secondary); font-weight: bold; font-size: 1.1rem;">準備好了嗎？請點選下方按鈕，開始這趟「先安住內在，再解鎖世代」的體驗示範之旅：</p>
+            <button class="tab-btn active" style="font-size: 1rem; padding: 12px 25px; background: var(--highlight); flex: 0 1 auto; margin: 0 auto;" onclick="switchTab('tab1')">🚀 開始進行【代間倫理 ✕ 情緒覺察】示範演練 ➔</button>
+        </div>
+    </div>
+</div>
+
+<!-- 分頁 2 (頁籤3)：焦慮情境切入與主題短文閱讀（示範演練） -->
+<div id="tab1" class="tab-content">
+    <div style="background: #f0f7f2; border: 1px solid var(--primary); padding: 12px 20px; border-radius: 8px; margin-bottom: 20px;">
+        <span class="tag" style="background: var(--primary); color: white;">實踐示範</span>
+        <span style="font-weight: bold; color: var(--primary);">以下為【情緒教育 ✕ 倫理教育】之教師依附覺察實務範例：</span>
+    </div>
+
+    <!-- 世代定義與三明治世代關係說明橫幅 -->
+    <div style="background: #fdfaf5; border-left: 5px solid var(--secondary); border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+        <h4 style="margin: 0 0 8px 0; color: var(--secondary); font-size: 1.05rem; display: flex; align-items: center; gap: 6px;">
+            <span>🥪</span> 關鍵觀念：代間系統與「三明治世代」責任與依附樞紐
+        </h4>
+        <p style="margin: 0; font-size: 0.92rem; color: var(--text); line-height: 1.6;">
+            本專案以家庭代間關係為架構，將家庭成員劃分為三個世代：<br>
+            • <b>G1 祖世代（高齡世代）</b>：高齡長輩 / 原生家庭父母<br>
+            • <b>G2 親世代（中世代 / 樞紐世代）</b>：國小教師自身（承上啟下的「三明治世代」，同時承載照顧長輩與教養兒童的心理與生活張力）<br>
+            • <b>G3 子世代（年輕世代）</b>：國小學生 / 年幼子女<br>
+            <span style="color: var(--primary); font-weight: bold; display: inline-block; margin-top: 4px;">透過梳理 G2 與 G1 的依附風格，能幫助教師安頓內在焦慮，建立健康的世代界線。</span>
+        </p>
+    </div>
+
+    <!-- 成人依附風格線上測驗引導橫幅 -->
+    <div style="background: #eef5f0; border: 1.5px solid var(--primary); border-radius: 10px; padding: 18px 20px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div style="flex: 1 1 300px;">
+            <h4 style="margin: 0 0 6px 0; color: var(--primary); font-size: 1.08rem; display: flex; align-items: center; gap: 6px;">
+                <span>🔍</span> 第一步：了解個人依附風格（線上 3 分鐘快速微測驗）
+            </h4>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text); line-height: 1.5;">
+                在開啟 AI 沉澱對話前，建議您可以先進行免費的客觀心理測驗，了解自己屬於「安全型、焦慮型、逃避型或恐懼型」依附，並將測驗結果作為對話起點輸入給 AI：
+            </p>
+        </div>
+        <div>
+            <a href="https://www.tip.org.tw/evaluatefree11" target="_blank" style="display: inline-block; background-color: var(--primary); color: white; text-decoration: none; padding: 10px 18px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; transition: all 0.2s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.15);" onmouseover="this.style.backgroundColor='#7d5a44'" onmouseout="this.style.backgroundColor='#2d5a40'">
+                🔗 開啟「成人依附風格量表」測驗 ➔
+            </a>
+        </div>
+    </div>
+
+    <div class="reading-section">
+        <div class="reading-header">
+            <div>
+                <h3 style="color: var(--primary); margin: 0;">📖 沉澱閱讀（一）：看見世代的鎖鏈，從 G1 的歷史找到內在安頓</h3>
+                <p style="color: var(--light-text); font-size: 0.88rem; margin: 4px 0 0 0;">聚焦代間依附傳遞與情緒覺察（對應依附與情緒主題）：</p>
+            </div>
+            <div>
+                <button class="btn-audio" onclick="playAudio('article1', this)">🔊 語音導讀</button>
+                <button class="btn-audio" style="background-color: #7d5a44;" onclick="stopAudio()">⏹ 停止朗讀</button>
+            </div>
+        </div>
+        <div class="reading-article" id="article1">
+            根據心理學家 Bowlby 與 Mary Main 的研究，人在原生家庭所形成的依附關係，有 70% 至 80% 會在世代間被無意識地複製與傳遞。作為國小教師（G2 中間世代），我們常在面對學生失控或家長質疑的瞬間，觸發內在未被滿足的情感需求。當我們感到憤怒或想防衛時，那往往不是對眼前的事件發火，而是觸動了童年成長經驗中「害怕失控」或「渴望被肯定」的記憶。
+            <br><br>
+            改變他人之前，必須先理解自己的童年。試著探究 G1 父母當時的求學背景、家庭排行與生存壓力——看見父母的侷限後，我們便不再責怪自己或父母，而是能以理智與溫柔看見世代的傳遞。透過這場沉澱，我們可以自主決定：哪些不好的互動模式該在我們這世代「斬斷（去蕪）」，哪些正向的力量值得被「保留（存菁）」。
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <h3 style="color: var(--primary); margin: 0 0 6px 0; font-size: 1.25rem;">忙碌的教學與家庭生活中，辛苦您了</h3>
+        <p style="margin: 0; color: var(--light-text); font-size: 0.93rem;">請點選最符合您目前心境的情境，複製引導詞與 AI 展開對話：</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="card">
+            <div>
+                <span class="tag">親師溝通 ✕ 討好防衛</span>
+                <div class="card-title">📱 情境 A：「老師，是不是你在針對我家小孩？」</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>面對家長語氣不善的質疑，心中瞬間緊繃，產生強烈的被否定感與焦慮，急著想解釋或委屈忍讓。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>面對家長質疑時我感到強烈的焦慮與委屈，請陪我運用情緒冰山與依附理論梳理我內在討好/防禦的聲音。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="tag">師生互動 ✕ 失控情緒</span>
+                <div class="card-title">🏫 情境 B：課堂上學生突如其來的失控與挑釁</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>「我就是不要寫做不行嗎！」面對學生情緒失控，多次勸導無效後，心中一股無名火升起，無力感蔓延。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>面對學生的失控反應時我發現自己很容易被激怒，請引導我看見內在冰山底層的情感需求與童年被要求的記憶。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="tag">代間互動 ✕ 權力干預</span>
+                <div class="card-title">🏠 情境 C：「你這樣教小孩/當老師不行啦！」</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>回到家或聚會時，G1 原生家庭長輩指手畫腳下指令，心中立刻升起一股熟悉的煩躁與抗拒。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>面對 G1 長輩的教養干預我常感到煩躁與被否定，請陪我探究 G1 父母的童年背景，幫我建立心理界線。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="tag">G2 樞紐 ✕ 能量耗竭</span>
+                <div class="card-title">⚖️ 情境 D：夾在照顧長輩與教學之間的窒息感</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>白天安撫幾十個學生與家長，下班還要關心高齡父母（G1）的身體，感覺自己像個陀螺，完全沒有自己。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>我覺得自己夾在照顧長輩與教學責任之間被抽乾，請陪我進行一場『去蕪存菁』的沉澱對話，協助我找回自我。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="tag">防衛機制 ✕ 超理智隔離</span>
+                <div class="card-title">🤐 情境 E：「反正按照規定來就好，不用談感情」</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>遇到高壓衝突時，習慣立刻切斷情緒，用冷漠、嚴厲的規則武裝自己，事後卻感到無比孤立與疲憊。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>衝突時我常習慣切斷感覺用超理智防衛，請陪我看見我內在害怕受傷的脆弱，建立健康的溫和溝通。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="tag">自我批判 ✕ 完美主義</span>
+                <div class="card-title">🥺 情境 F：「是不是我不夠好，才會處理不好事情？」</div>
+                <div class="scenario-text">
+                    <strong>臨場對話：</strong>只要有一個家長不滿意或學生沒學好，就深深陷入自責黑洞，不斷批判自己不是個合格的好老師。
+                </div>
+            </div>
+            <div class="prompt-box">
+                <span>我常陷入完美主義與自我批判的黑洞中，請陪我尋找『自己好，別人也好』的安全依附自尊，安頓我自己。</span>
+                <button class="btn-copy" onclick="copyText(this)">複製引導詞</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 分頁 3：AI 引導 Prompt 庫與主題短文閱讀 -->
+<div id="tab2" class="tab-content">
+    <div class="reading-section">
+        <div class="reading-header">
+            <div>
+                <h3 style="color: var(--primary); margin: 0;">📖 沉澱閱讀（二）：衝突是理解的開始，從尖銳開場到雙向溝通</h3>
+                <p style="color: var(--light-text); font-size: 0.88rem; margin: 4px 0 0 0;">聚焦溝通轉化與衝突應對（對應衝突與溝通主題）：</p>
+            </div>
+            <div>
+                <button class="btn-audio" onclick="playAudio('article2', this)">🔊 語音導讀</button>
+                <button class="btn-audio" style="background-color: #7d5a44;" onclick="stopAudio()">⏹ 停止朗讀</button>
+            </div>
+        </div>
+        <div class="reading-article" id="article2">
+            在親師對話或師生互動中，衝突往往源於雙方「視角不同」與「期待未被看見」。根據 David H. Olson 的衝突模式，爭執發生的前三分鐘，幾乎就能預測該次衝突的結果。當我們習慣用帶有指責或防禦的「尖銳開場」對話時，往往會激起對方的生氣與反彈；相反地，若能採取「溫和開場（Soft Startup）」——抱怨事情但不攻擊個人，就能顯著提升解決問題的可能性。
+            <br><br>
+            當衝突發生、心跳每分鐘超過一百下時，身體正處於高壓狀態，難以理性思考。此時最需要暫停 20 分鐘進行深呼吸與平復。請記住，溝通不只是告知想法，更需要「澄清立場與表達需求」。將籠統的抱怨轉化為具體的需求表達（描述客觀事實 + 表達感受 + 提出期待），並透過日常的正念與感謝積累「關係存款」，我們就能在維繫關係的前提下，達到真正的共識與和解。
+        </div>
+    </div>
+
+    <div style="background: white; padding: 25px; border-radius: 12px; max-width: 850px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <h3 style="color: var(--primary); margin-top: 0;">💬 複製 AI 溫柔心理導引 System Prompt 庫</h3>
+        <p style="color: var(--light-text); font-size: 0.95rem;">您可以選擇複製【核心一對一導引卡】，或複製下方的【專屬功能深化 Prompt】貼入 Gemini 進行演練：</p>
+        
+        <div style="margin-bottom: 25px;">
+            <span class="tag" style="background: var(--primary); color: white;">★ 核心一對一沉澱 System Prompt</span>
+            <div class="prompt-box" style="white-space: pre-wrap; font-family: monospace; line-height: 1.5; font-size: 0.88rem;">請扮演一位具備家庭系統與依附理論知能的「溫柔心理引導者」。我是一位國小教師（G2中間世代），請陪伴我進行 15 分鐘的原生家庭（G1）依附覺察與內在沉澱。
+
+【核心引導原則】：
+1. 嚴格控管每次回覆長度在 3 句話以內，保持客觀、溫柔、無評價與高度接納。
+2. 每次僅提出 1 個開放式問題，陪伴我逐步經歷以下四大步驟：
+   - Step 1【看見情緒冰山】：無條件接納當前焦慮，引導看見喜怒哀樂背後未被滿足的情感需求（如：接納、尊重、安全感）。
+   - Step 2【回顧童年與探究父母（G1）】：引導探究 G1 父母長大的時代背景、求學經歷與侷限，理解「不是責怪自己或父母，而是看見世代間依附風格的複製與傳遞（70-80%）」。
+   - Step 3【去蕪存菁】：引導梳理「你想斬斷的不好互動模式（去蕪）」與「你想保留/建立的好模式（存菁）」。
+   - Step 4【內在安頓】：協助我產出一句專屬的 G2 內在安頓肯定句。
+
+3. 請先用一句溫暖的話問候我，並邀請我分享今天最想被安頓的情緒或溝通困境。</div>
+            <button class="btn-copy" style="float: none; margin-top: 10px; background: var(--primary);" onclick="copyText(this)">📋 一鍵複製完整 System Prompt</button>
+        </div>
+
+        <hr style="border: 0.5px solid var(--accent); margin: 25px 0;">
+
+        <h4 style="color: var(--primary); margin-bottom: 15px;">🔍 講義精華：專屬功能演練 Prompt 模組</h4>
+        
+        <div class="grid-container" style="grid-template-columns: 1fr;">
+            <div class="card" style="border-left-color: var(--secondary);">
+                <div>
+                    <span class="tag">探究父母童年 ✕ 去蕪存菁</span>
+                    <div class="card-title">1. G1 父母童年歷史與換位思考 Prompt</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 8px;">引導教師梳理 G1 父母的排行、求學經歷與時代限制，看見「父母也是被複製的童年」。</p>
+                </div>
+                <div class="prompt-box">
+                    <span>請陪伴我探究我父母（G1高齡世代）成長的時代背景、家庭排行與當時的生存壓力。請用 3 個開放式提問，協助我看見父母管教方式背後的無奈與侷限，幫助我卸下心結，完成去蕪存菁。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card" style="border-left-color: var(--secondary);">
+                <div>
+                    <span class="tag">衝突溝通 ✕ 溫和開場</span>
+                    <div class="card-title">2. 爭執前 3 分鐘「溫和開場（Soft Startup）」轉化 Prompt</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 8px;">把帶有批判、尖銳的對話（如家長/學生衝突），改寫為「抱怨但不攻擊」的溫和開場句。推演爭執前三分鐘的關鍵溝通。</p>
+                </div>
+                <div class="prompt-box">
+                    <span>當我想向【家長/學生/G1長輩】表達不滿時，我常不小心變得尖銳防衛。請引導我將原本想講的生氣話，演練轉化為包含『描述客觀事實 + 表達自身感受 + 提出具體期待』的 3 分鐘溫和開場句。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card" style="border-left-color: var(--secondary);">
+                <div>
+                    <span class="tag">具體需求 ✕ 告別抱怨</span>
+                    <div class="card-title">3. 具體化「情感需求與清晰期待」引導 Prompt</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 8px;">協助教師停下籠統的抱怨，將心中的焦慮具體化為能讓對方理解的「情感需求」。</p>
+                </div>
+                <div class="prompt-box">
+                    <span>我發現自己最近對【教學/親師關係】有很多籠統的抱怨。請引導我透過薩提爾冰山，看見我底層最渴望獲得的『被尊重、被理解或安全感』需求，並教我如何清晰表達出來。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+
+            <div class="card" style="border-left-color: var(--secondary);">
+                <div>
+                    <span class="tag">正念安頓 ✕ 關係存款</span>
+                    <div class="card-title">4. 3 分鐘正念感謝冥想與內在賦能 Prompt</div>
+                    <p style="font-size: 0.88rem; margin-bottom: 8px;">引導教師進行深呼吸與細數感謝，快速平復每分鐘超過百下的緊張心率，累積關係存款。推演衝突後的自我調適。</p>
+                </div>
+                <div class="prompt-box">
+                    <span>我現在感到非常疲憊與焦慮，請帶領我進行一段 3 分鐘的正念呼吸與感謝冥想，引導我將注意力帶回當下，找回安心感與感謝的力量。</span>
+                    <button class="btn-copy" onclick="copyText(this)">複製 Prompt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 分頁 4：生成安頓卡 -->
+<div id="tab3" class="tab-content">
+    <div class="card-generator">
+        <h3 style="color: var(--primary); text-align: center; margin-top: 0;">🃏 製作專屬「內在安頓與去蕪存菁卡」</h3>
+        <p style="text-align: center; color: var(--light-text); font-size: 0.9rem; margin-bottom: 20px;">根據對話結果，填入屬於您的去蕪存菁抉擇，生成可隨身儲存的安頓圖卡：</p>
+        
+        <div class="form-group">
+            <label>給自己的內在安頓肯定句：</label>
+            <input type="text" id="affirmationInput" class="form-control" value="我是穩定的樞紐，看見世代傳遞後，我選擇帶著理解與界線溫柔前行。">
+        </div>
+
+        <div class="form-group">
+            <label>✂️ 想斬斷/放下的舊模式（去蕪）：</label>
+            <input type="text" id="removeInput" class="form-control" value="過度承擔他人情緒、尖銳式溝通開場、複製 G1 的權威防衛">
+        </div>
+
+        <div class="form-group">
+            <label>🌱 想保留/建立的新力量（存菁）：</label>
+            <input type="text" id="keepInput" class="form-control" value="溫和開場與傾聽、建立心理健康界線、積累關係存款">
+        </div>
+
+        <button class="btn-copy" id="downloadBtn" style="width: 100%; padding: 12px; font-size: 1rem; float: none; background: var(--primary);" onclick="generateAndDownloadCard()">✨ 生成並下載個人安頓卡圖片 (PNG)</button>
+
+        <div class="preview-card" id="cardPreview">
+            <h3>👑 《解鎖世代》內在安頓卡</h3>
+            <p id="cardAffirmation" style="font-size: 1.1rem; color: var(--secondary); font-weight: bold; margin: 15px 0;">"我是穩定的樞紐，看見世代傳遞後，我選擇帶著理解與界線溫柔前行。"</p>
+            <hr style="border: 0.5px solid var(--accent); margin: 15px 0;">
+            <p style="text-align: left; margin: 8px 0;"><strong>✂️ 去蕪 (斬斷與放下)：</strong> <span id="cardRemove">過度承擔他人情緒、尖銳式溝通開場、複製 G1 的權威防衛</span></p>
+            <p style="text-align: left; margin: 8px 0;"><strong>🌱 存菁 (保留與建立)：</strong> <span id="cardKeep">溫和開場與傾聽、建立心理健康界線、積累關係存款</span></p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>設計者：國北教大 學習科技與媒體研究團隊 ✕ 家庭教育專業推廣專案</p>
+</footer>
+
+<script>
+    // 切換主 Tab
+    function switchTab(tabId) {
+        stopAudio();
+
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if(activeBtn) activeBtn.classList.add('active');
+        
+        document.getElementById(tabId).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 切換分頁 0 裡面的「總覽」、「翻牌測驗」與「國小對照」三個子頁籤模式，並即時更新動態標題 (選項 C)
+    function toggleCategoryMode(mode) {
+        const overviewDiv = document.getElementById('categoryOverview');
+        const flipDiv = document.getElementById('categoryFlip');
+        const subjectDiv = document.getElementById('categorySubject');
+
+        const btnOverview = document.getElementById('btnModeOverview');
+        const btnFlip = document.getElementById('btnModeFlip');
+        const btnSubject = document.getElementById('btnModeSubject');
+
+        const dynamicTitle = document.getElementById('tab0DynamicTitle');
+
+        overviewDiv.style.display = 'none';
+        flipDiv.style.display = 'none';
+        subjectDiv.style.display = 'none';
+
+        btnOverview.classList.remove('active');
+        btnFlip.classList.remove('active');
+        btnSubject.classList.remove('active');
+
+        if (mode === 'overview') {
+            overviewDiv.style.display = 'grid';
+            btnOverview.classList.add('active');
+            dynamicTitle.innerText = '家庭教育 10 大範疇定義總覽';
+        } else if (mode === 'flip') {
+            flipDiv.style.display = 'grid';
+            btnFlip.classList.add('active');
+            dynamicTitle.innerText = '家庭教育 10 大範疇記憶翻牌測驗';
+        } else if (mode === 'subject') {
+            subjectDiv.style.display = 'block';
+            btnSubject.classList.add('active');
+            dynamicTitle.innerText = '國小跨領域課程融入與 Prompt 備課對照';
+        }
+    }
+
+    // 國小科目篩選邏輯
+    function filterSubject(subject) {
+        const buttons = document.querySelectorAll('#categorySubject .btn-filter');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const cards = document.querySelectorAll('.subject-card');
+        cards.forEach(card => {
+            const subjects = card.getAttribute('data-subjects');
+            if (subject === 'all' || subjects.includes(subject)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function copyText(button) {
+        const textToCopy = button.previousElementSibling ? button.previousElementSibling.innerText : button.parentElement.querySelector('div').innerText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = button.innerText;
+            button.innerText = '已複製！';
+            button.style.backgroundColor = '#27ae60';
+            setTimeout(() => {
+                button.innerText = originalText;
+                button.style.backgroundColor = '#7d5a44';
+            }, 1500);
+        });
+    }
+
+    function playAudio(elementId, button) {
+        window.speechSynthesis.cancel();
+
+        const text = document.getElementById(elementId).innerText;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-TW';
+        utterance.rate = 0.95;
+
+        utterance.onstart = () => {
+            button.innerText = '🔊 正在導讀中...';
+            button.style.backgroundColor = '#27ae60';
+        };
+
+        utterance.onend = () => {
+            button.innerText = '🔊 語音導讀';
+            button.style.backgroundColor = '#2d5a40';
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function stopAudio() {
+        window.speechSynthesis.cancel();
+        document.querySelectorAll('.btn-audio').forEach(btn => {
+            if (btn.innerText.includes('正在導讀')) {
+                btn.innerText = '🔊 語音導讀';
+                btn.style.backgroundColor = '#2d5a40';
+            }
+        });
+    }
+
+    function generateAndDownloadCard() {
+        const btn = document.getElementById('downloadBtn');
+        btn.innerText = '⏳ 正在繪製圖片並下載中...';
+        btn.style.backgroundColor = '#7d5a44';
+
+        document.getElementById('cardAffirmation').innerText = '"' + document.getElementById('affirmationInput').value + '"';
+        document.getElementById('cardRemove').innerText = document.getElementById('removeInput').value;
+        document.getElementById('cardKeep').innerText = document.getElementById('keepInput').value;
+
+        const cardElement = document.getElementById('cardPreview');
+        html2canvas(cardElement, {
+            scale: 2,
+            backgroundColor: '#fdfcf9'
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = '內在安頓卡.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            btn.innerText = '✅ 已成功下載圖片！';
+            btn.style.backgroundColor = '#27ae60';
+            setTimeout(() => {
+                btn.innerText = '✨ 生成並下載個人安頓卡圖片 (PNG)';
+                btn.style.backgroundColor = '#2d5a40';
+            }, 2000);
+        }).catch(err => {
+            console.error('下載失敗:', err);
+            btn.innerText = '✨ 已更新內容 (若未自動下載可直接對卡片截圖)';
+            setTimeout(() => {
+                btn.innerText = '✨ 生成並下載個人安頓卡圖片 (PNG)';
+                btn.style.backgroundColor = '#2d5a40';
+            }, 2500);
+        });
+    }
+</script>
+
+</body>
+</html>
